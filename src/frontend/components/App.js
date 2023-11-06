@@ -22,7 +22,9 @@ function App() {
 
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+
     setAccount(accounts[0])
+    console.log(accounts[0]);
     // Get provider from Metamask
     const provider = new ethers.providers.Web3Provider(window.ethereum)
     // Get signer
@@ -35,15 +37,16 @@ function App() {
     setContract(contract)
     setLoading(false)
   }
+  console.log(account);
   return (
     <BrowserRouter>
       <div className="App">
         <>
           <Navbar expand="lg" bg="secondary" variant="dark">
             <Container>
-              <Navbar.Brand href="http://www.dappuniversity.com/bootcamp">
-                <img src={logo} width="40" height="40" className="" alt="" />
-                &nbsp; Music NFT player
+              <Navbar.Brand href="">
+                {/* <img src={logo} width="40" height="40" className="" alt="" /> */}
+                &nbsp; MusicNFT
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
@@ -55,12 +58,13 @@ function App() {
                 <Nav>
                   {account ? (
                     <Nav.Link
-                      href={`https://etherscan.io/address/${account}`}
+                      href={`${account}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="button nav-button btn-sm mx-4">
                       <Button variant="outline-light">
                         {account.slice(0, 5) + '...' + account.slice(38, 42)}
+                        {/* console.log(account); */}
                       </Button>
 
                     </Nav.Link>
@@ -74,7 +78,7 @@ function App() {
         </>
         <div>
           {loading ? (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+            <div style={{ display: 'flex',color: 'white',fontSize:'48px', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
               <Spinner animation="border" style={{ display: 'flex' }} />
               <p className='mx-3 my-0'>Awaiting Metamask Connection...</p>
             </div>
@@ -89,7 +93,7 @@ function App() {
               <Route path="/my-resales" element={
                 <MyResales contract={contract} account={account} />
               } />
-            </Routes>
+            </Routes>        
           )}
         </div>
       </div>

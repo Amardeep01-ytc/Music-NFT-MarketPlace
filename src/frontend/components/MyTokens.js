@@ -120,7 +120,9 @@ export default function MyTokens({ contract }) {
         </div>
         : (
           <main style={{ padding: "1rem 0" }}>
-            <h2>No owned tokens</h2>
+            <h2 style={{ color: 'white',fontSize:'48px', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
+
+            No owned tokens</h2>
           </main>
         )}
     </div>

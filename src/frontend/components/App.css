@@ -1,3 +1,12 @@
+body{
+  background-image: url(blockchain-image.jpg);
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+}
+
+
 .App {
   text-align: center;
 }
